@@ -19,7 +19,7 @@ import { ProductService } from "./product.service";
   })
 
 export class AppComponent implements OnInit {
-    title = 'Pet-Supplies';
+    title = 'Pet Supplies';
     phoneNumber = '06-12345678';
     emailAdress = 'order@pet-supplies.com';
     products: Product[];
@@ -28,7 +28,11 @@ export class AppComponent implements OnInit {
     };
   
     getAllProducts(): void {
-      this.productService.getAllProducts().then(products => this.products = products);
+      this.productService
+          .getAllProducts()
+          .subscribe((data:Product[]) => this.products = data,
+              error => console.log(error),
+              () => console.log('GET all products complete'));
     }
 
     ngOnInit(): void {

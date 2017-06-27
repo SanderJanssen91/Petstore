@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response, RequestOptions } from "@angular/http";
-import {Observable} from 'rxjs/Rx';
+import { Http, Response, Headers } from "@angular/http";
+import {Observable} from 'rxjs/Observable';
 
-import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
 import { PRODUCTS } from "./mock-products";
@@ -11,27 +10,26 @@ import { Configuration } from "./app.constants";
 
 @Injectable()
 export class ProductService {
-    getAllProducts(): Promise<Product[]> {
-        return Promise.resolve(PRODUCTS);
-    }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
-    
-/*
     private actionUrl: string;
+    private headers: Headers;
 
-    constructor(private http: Http, private configuration: Configuration) {
-        this.actionUrl = configuration.ServerWithApiUrl + 'rest/product/all/';
-    }*/
+    constructor(private http : Http){
+        // this.actionUrl = configuration.ServerWithApiUrl + 'product/all';
+        this.actionUrl = 'http://localhost:8080/Back-end-1.0/rest/product/all';
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+    }
 
-/*    public getAllProducts2 = (): Observable<Product[]> => {
-        return this.http
-            .get(this.actionUrl)
-            .map(response => response.json().data as Product[])
-            .catch(this.handleError);
-    }*/
- 
+    getAllProducts(): Observable<Product[]> {
+        let headers = new Headers ();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+        
+        return this.http.get(this.actionUrl)
+            .map((response: Response) => {
+                const data = response.json();
+                return data;
+            }) 
+    }
 }

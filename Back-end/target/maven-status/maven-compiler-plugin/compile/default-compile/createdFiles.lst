@@ -1,2 +1,4 @@
 nl\sander\rest\ProductRestService.class
+nl\sander\rest\ProductRestController.class
 nl\sander\model\Product.class
+nl\sander\CorsFilter.class

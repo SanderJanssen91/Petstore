@@ -1,5 +1,6 @@
 package nl.sander.rest;
 
+        import javax.inject.Inject;
         import javax.ws.rs.GET;
         import javax.ws.rs.Path;
         import javax.ws.rs.PathParam;
@@ -8,13 +9,16 @@ package nl.sander.rest;
         import javax.ws.rs.core.Response;
 
         import nl.sander.model.Product;
+//        import nl.sander.service.ProductService;
 
         import java.util.ArrayList;
         import java.util.Arrays;
         import java.util.List;
 
 @Path("/product")
-public class ProductRestService {
+public class ProductRestController {
+//    @Inject
+//    ProductService productService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,9 +50,5 @@ public class ProductRestService {
         List allProductsList = new ArrayList();
         allProductsList = Arrays.asList(allProducts);
 
-//        return Response.status(200).entity(allProductsList).build();
-        return allProductsList;
-
+        return allProductsList;}
     }
-
-}
