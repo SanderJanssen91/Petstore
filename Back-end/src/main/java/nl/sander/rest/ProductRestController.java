@@ -1,14 +1,11 @@
 package nl.sander.rest;
 
-        import javax.inject.Inject;
-        import javax.ws.rs.GET;
-        import javax.ws.rs.Path;
-        import javax.ws.rs.PathParam;
-        import javax.ws.rs.Produces;
+        import javax.ws.rs.*;
         import javax.ws.rs.core.MediaType;
-        import javax.ws.rs.core.Response;
 
+        import nl.sander.service.AddProduct;
         import nl.sander.model.Product;
+        import nl.sander.service.FindAllProducts;
 //        import nl.sander.service.ProductService;
 
         import java.util.ArrayList;
@@ -50,5 +47,15 @@ public class ProductRestController {
         List allProductsList = new ArrayList();
         allProductsList = Arrays.asList(allProducts);
 
-        return allProductsList;}
+        return allProductsList;
     }
+
+
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/test")
+//    public void testPost(){
+//        AddProduct.addProduct();
+//    }
+}
+
