@@ -1,0 +1,6 @@
+nl\sander\service\FindAllProducts.class
+nl\sander\rest\ProductRestController.class
+nl\sander\service\AddProduct.class
+nl\sander\HibernateUtil.class
+nl\sander\model\Product.class
+nl\sander\CorsFilter.class

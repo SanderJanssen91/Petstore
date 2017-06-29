@@ -1,24 +1,8 @@
-<!doctype html>
-<html>
-  <body> 
-    <h1>Pet Supplies</h1>
-    <table> 
- <tr>
-    <th>Product name</th>
-    <th>Product description</th> 
-    <th>Product price</th>
-  </tr>
-  <tr>
-    <td>Hondenbrokken</td>
-    <td>Hard, droog voer voor alle honden</td> 
-    <td>€15,-</td>
-  </tr>
-  <tr>
-    <td>Kattenbrokken</td>
-    <td>Hard, droog voer voor alle katten</td> 
-    <td>€15,-</td>
-  </tr>
-</table>
-<p>Want to order something? Please contact us on 06-12345678 or order@pet-supplies.com.</p>
+  <body>
+  <h1>{{title}}</h1>
+  <h2>Producten</h2>
+  <product-table [products]="products"></product-table>
+  <div>
+    <p>U kunt een telefonische bestelling doen via {{phoneNumber}}, daarnaast is het ook mogelijk uw bestelling te e-mailen naar {{emailAdress}}. </p>
+  </div>
 </body>
-</html>

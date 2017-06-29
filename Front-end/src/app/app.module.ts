@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from "@angular/http";
 
 import { AppComponent } from './app.component';
 import { ProductTableComponent } from "./product-table.component";
+import { ProductService } from "./product.service";
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { ProductTableComponent } from "./product-table.component";
     ProductTableComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,22 +1,14 @@
-<!doctype html>
-<html>
-  <body> 
+  <div *ngIf="products">
     <table> 
- <tr>
-    <th>Product name</th>
-    <th>Product description</th> 
-    <th>Product price</th>
-  </tr>
-  <tr>
-    <td>Hondenbrokken</td>
-    <td>Hard, droog voer voor alle honden</td> 
-    <td>€15,-</td>
-  </tr>
-  <tr>
-    <td>Kattenbrokken</td>
-    <td>Hard, droog voer voor alle katten</td> 
-    <td>€15,-</td>
-  </tr>
-</table>
-</body>
-</html>
+      <tr>
+        <th>Naam</th>
+        <th>Omschrijving</th> 
+        <th>Prijs</th>
+      </tr>
+      <tr *ngFor="let product of products">
+        <td>{{product.name}}</td>
+        <td>{{product.desc}}</td> 
+        <td>€{{product.price}},-</td>
+      </tr>
+    </table>
+  </div>
