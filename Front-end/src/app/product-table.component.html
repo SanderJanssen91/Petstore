@@ -3,11 +3,22 @@
       <tr>
         <th>Naam</th>
         <th>Omschrijving</th> 
-        <th>Prijs</th>
+        <th>Prijs per stuk</th>
+        <th>Prijs totaal</th>
+        <th>Aantal</th>
+        <th></th>
       </tr>
       <tr *ngFor="let product of products">
         <td>{{product.name}}</td>
-        <td>{{product.desc}}</td> 
+        <td>{{product.description}}</td> 
+        <td>€{{product.price}},-</td>
+        <td *ngFor="let product of order"> {{product.totalPrice}}</td>
+        <td *ngFor="let product of order"> {{product.ammount}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Totaalprijs bestelling</td>
+        <td></td> 
         <td>€{{product.price}},-</td>
       </tr>
     </table>

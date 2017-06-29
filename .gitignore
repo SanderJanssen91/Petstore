@@ -1,0 +1,8 @@
+./Back-end/target/
+derby.log
+.project
+./Back-end/classpath
+.git/
+./Back-end/.idea/
+./Back-end/main
+./Back-end/Back-end
