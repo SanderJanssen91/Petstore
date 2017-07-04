@@ -1,6 +1,5 @@
 package nl.sander.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +13,8 @@ public class Product {
     private String name;
     private String description;
     private double price;
+    private double totalPrice;
+    private int quantity;
 
 
     public Product() {};
@@ -38,6 +39,7 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+        setTotalPrice();
     }
 
     public String getDescription() {
@@ -50,6 +52,23 @@ public class Product {
 
     public int getId() {
         return id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setTotalPrice() {
+        this.totalPrice = quantity*price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+        setTotalPrice();
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
     }
 }
 

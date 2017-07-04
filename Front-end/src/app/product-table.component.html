@@ -1,5 +1,7 @@
   <div *ngIf="products">
-    <table> 
+    <table>
+      <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" 
+              rel="stylesheet"> 
       <tr>
         <th>Naam</th>
         <th>Omschrijving</th> 
@@ -12,14 +14,17 @@
         <td>{{product.name}}</td>
         <td>{{product.description}}</td> 
         <td>€{{product.price}},-</td>
-        <td *ngFor="let product of order"> {{product.totalPrice}}</td>
-        <td *ngFor="let product of order"> {{product.ammount}}</td>
+        <td>€{{product.totalPrice}},-</td>
+        <td> {{product.quantity}}</td>
+        <td>
+            <button (click)="addToCart(product)"> <i class="material-icons">add_shopping_cart</i> </button>
+        </td>
       </tr>
       <tr>
         <td></td>
         <td>Totaalprijs bestelling</td>
         <td></td> 
-        <td>€{{product.price}},-</td>
+        <td>€{{orderTotalPrice}},-</td>
       </tr>
     </table>
   </div>
