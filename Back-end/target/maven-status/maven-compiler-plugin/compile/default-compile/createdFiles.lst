@@ -1,6 +1,9 @@
-nl\sander\service\FindAllProducts.class
+nl\sander\service\AbstractCrudRepository.class
+nl\sander\JaxRsActivator.class
 nl\sander\rest\ProductRestController.class
-nl\sander\service\AddProduct.class
-nl\sander\HibernateUtil.class
 nl\sander\model\Product.class
+nl\sander\service\ProductService.class
+nl\sander\model\OrderProduct.class
+nl\sander\model\MyCompositePK.class
 nl\sander\CorsFilter.class
+nl\sander\model\Order.class

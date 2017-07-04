@@ -1,54 +1,57 @@
 package nl.sander.rest;
 
+        import javax.inject.Inject;
         import javax.ws.rs.*;
         import javax.ws.rs.core.MediaType;
 
-        import nl.sander.service.AddProduct;
         import nl.sander.model.Product;
-        import nl.sander.service.FindAllProducts;
-//        import nl.sander.service.ProductService;
+        import nl.sander.service.ProductService;
 
         import java.util.ArrayList;
-        import java.util.Arrays;
         import java.util.List;
+
 
 @Path("/product")
 public class ProductRestController {
-//    @Inject
-//    ProductService productService;
+    @Inject
+    ProductService productService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/all")
     public List<Product> getAllProducts() {
-        Product kattenbrokken = new Product();
-        kattenbrokken.setName("Kattenbrokken");
-        kattenbrokken.setDesc("Hard, droog voer voor alle katten");
-        kattenbrokken.setPrice(10.0);
+            System.out.println("GET method in Java is reached");
+            return productService.findAll();
+        };
 
-        Product hondenbrokken = new Product();
-        hondenbrokken.setName("Hondenbrokken");
-        hondenbrokken.setDesc("Hard, droog voer voor alle honden");
-        hondenbrokken.setPrice(15.0);
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/totalprice")
+    public double totalPrice() {
+        System.out.println("GET method 2 in Java is reached");
+        List<Product> products = productService.findAll();
+        double orderTotalPrice = 0.0;
 
-        Product konijnenbrokken = new Product();
-        konijnenbrokken.setName("Konijnenbrokken");
-        konijnenbrokken.setDesc("Hard, droog voer voor alle konijnen");
-        konijnenbrokken.setPrice(12.0);
+        for (Product product : products) {
+            orderTotalPrice += product.getTotalPrice();
+        }
 
-        Product[] allProducts;
-        allProducts = new Product[3];
-        allProducts[0] = hondenbrokken;
-        allProducts[1] = kattenbrokken;
-        allProducts[2] = konijnenbrokken;
+        try {return orderTotalPrice;}
+        catch (Exception e){
+            System.out.println(e);
+            return 100.0;
+        }
+    };
 
-        System.out.println(allProducts[1].getName());
-
-        List allProductsList = new ArrayList();
-        allProductsList = Arrays.asList(allProducts);
-
-        return allProductsList;
-    }
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/addtocart")
+    public void addToCart(Product product){
+        System.out.println("PUT method in Java is reached");
+        product.setQuantity(product.getQuantity()+1);
+        productService.merge(product);
+    };
+}
 
 
 //    @POST
@@ -57,5 +60,5 @@ public class ProductRestController {
 //    public void testPost(){
 //        AddProduct.addProduct();
 //    }
-}
+
 

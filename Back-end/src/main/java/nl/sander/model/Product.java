@@ -3,26 +3,26 @@ package nl.sander.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table
 public class Product {
 
     @Id
     @GeneratedValue
     private int id;
-
     private String name;
+    private String description;
     private double price;
-    private String desc;
+    private double totalPrice;
+    private int quantity;
+
 
     public Product() {};
 
-    public Product(String name, Double price, String desc){
+    public Product(String name, Double price, String description){
         setName(name);
         setPrice(price);
-        setDesc(desc);
+        setDescription(description);
     }
 
     public String getName() {
@@ -39,18 +39,36 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+        setTotalPrice();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getId() {
         return id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setTotalPrice() {
+        this.totalPrice = quantity*price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+        setTotalPrice();
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
     }
 }
 
