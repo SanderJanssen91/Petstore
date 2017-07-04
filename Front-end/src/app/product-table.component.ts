@@ -31,6 +31,5 @@ export class ProductTableComponent {
           (data:number) => this.orderTotalPrice = data,
             error => console.log(error),
             () => console.log('GET order price complete'));
-      location.reload()
-    }
+      }
 }

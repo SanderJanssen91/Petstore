@@ -1,4 +1,4 @@
-package nl.sander.model;
+package nl.sander;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

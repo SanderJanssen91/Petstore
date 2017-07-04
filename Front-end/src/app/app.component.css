@@ -4,9 +4,12 @@ body {
 
 h1 {
     color: darkblue;
-    margin-left: 20px;
+    margin-left: 2%;
     font-family: Arial, Helvetica, sans-serif;
     background-color: lightblue;
+    display: inline-block;
+    vertical-align: middle;
+    width: 30%;
 }
 
 h2 {
@@ -19,4 +22,41 @@ p {
     color: darkblue;
     margin-left: 20px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.footerholder {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.footer {
+    color: darkblue;
+    background: none repeat scroll 0 0 white;
+    height: 100px;
+    margin: auto;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.material-icons{
+    font-size: 55px;
+}
+
+.titelblok {
+    color: darkblue;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+    width: 100%;
+    }
+
+nav{
+    display: inline-block;
+    width: 67%;
+    text-align: right;
+    margin: 0;
+    vertical-align: middle;
 }

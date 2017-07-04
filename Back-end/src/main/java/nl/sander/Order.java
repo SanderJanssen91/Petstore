@@ -1,4 +1,4 @@
-package nl.sander.model;
+package nl.sander;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

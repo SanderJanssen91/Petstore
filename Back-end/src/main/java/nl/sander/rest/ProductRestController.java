@@ -1,10 +1,13 @@
 package nl.sander.rest;
 
         import javax.inject.Inject;
+        import javax.validation.constraints.Null;
         import javax.ws.rs.*;
         import javax.ws.rs.core.MediaType;
 
         import nl.sander.model.Product;
+        import nl.sander.model.ProductOrder;
+        import nl.sander.service.ProductOrderService;
         import nl.sander.service.ProductService;
 
         import java.util.ArrayList;
@@ -15,6 +18,8 @@ package nl.sander.rest;
 public class ProductRestController {
     @Inject
     ProductService productService;
+    @Inject
+    ProductOrderService productOrderService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -29,11 +34,11 @@ public class ProductRestController {
     @Path("/totalprice")
     public double totalPrice() {
         System.out.println("GET method 2 in Java is reached");
-        List<Product> products = productService.findAll();
+        List<ProductOrder> productsOrder = productOrderService.findAll();
         double orderTotalPrice = 0.0;
 
-        for (Product product : products) {
-            orderTotalPrice += product.getTotalPrice();
+        for (ProductOrder productOrder : productsOrder) {
+            orderTotalPrice += productOrder.getTotalPrice();
         }
 
         try {return orderTotalPrice;}
@@ -43,22 +48,32 @@ public class ProductRestController {
         }
     };
 
-    @PUT
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/addtocart")
     public void addToCart(Product product){
         System.out.println("PUT method in Java is reached");
-        product.setQuantity(product.getQuantity()+1);
-        productService.merge(product);
-    };
-}
+
+         try {  ProductOrder productOrder;
+                productOrder = productOrderService.find(product.getId());
+                productOrder.setQuantity(productOrder.getQuantity()+1);
+                productOrder.setTotalPrice();
+                productOrderService.merge(productOrder);}
+
+            catch (NullPointerException npe) {
+                System.out.println("PUT method 2 in Java is reached");
+                ProductOrder productOrder = new ProductOrder();
+                productOrder.setProductId(product.getId());
+                productOrder.setProductName(product.getName());
+                productOrder.setProductPrice(product.getPrice());
+                productOrder.setQuantity(1);
+                productOrder.setTotalPrice();
+                productOrderService.persist(productOrder);
+            }
+         }
+    }
 
 
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/test")
-//    public void testPost(){
-//        AddProduct.addProduct();
-//    }
+
 
 

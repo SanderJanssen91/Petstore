@@ -1,9 +1,12 @@
-nl\sander\service\AbstractCrudRepository.class
 nl\sander\JaxRsActivator.class
 nl\sander\rest\ProductRestController.class
 nl\sander\model\Product.class
+nl\sander\rest\ProductOrderRestController.class
+nl\sander\service\AbstractCrudRepository.class
+nl\sander\Order.class
 nl\sander\service\ProductService.class
-nl\sander\model\OrderProduct.class
-nl\sander\model\MyCompositePK.class
+nl\sander\OrderProduct.class
+nl\sander\service\ProductOrderService.class
+nl\sander\MyCompositePK.class
 nl\sander\CorsFilter.class
-nl\sander\model\Order.class
+nl\sander\model\ProductOrder.class
