@@ -1,7 +1,21 @@
   <body>
-  <h1>{{title}}</h1>
-  <my-products></my-products>
-  <div>
-    <p> De mogelijkheid om bestellingen te plaatsen via de website is not niet beschikbaar. Tot die tijd kunt een telefonische bestelling doen via {{phoneNumber}}, daarnaast is het ook mogelijk uw bestelling te e-mailen naar {{emailAdress}}. </p>
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" 
+              rel="stylesheet">
+  <div class="titelblok">
+<h1>
+    Pet Supplies
+</h1>
+  <nav>
+      <a routerLink="/products"><i class="material-icons">home</i></a>
+      <a routerLink="/shoppingcart"> <i class="material-icons">shopping_cart</i> </a>
+    </nav>
   </div>
+  
+  
+  <router-outlet></router-outlet>
+  <div class="footerholder">
+    <div class="footer">
+        Pet Supplies - Lange Hullenbergweg 317 - 1111BA Amsterdam-Zuidoost
+    </div>
+</div>
 </body>
