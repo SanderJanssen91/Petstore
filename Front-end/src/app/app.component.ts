@@ -8,6 +8,4 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent {
     title = 'Pet Supplies';
-    phoneNumber = '06-12345678';
-    emailAdress = 'order@pet-supplies.com';
 }

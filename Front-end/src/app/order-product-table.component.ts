@@ -12,4 +12,7 @@ import { ProductOrder } from "./product-order";
 export class OrderProductTableComponent {
     @Input() orderTotalPrice: number;
     @Input() productsOrder: ProductOrder[];
+
+    phoneNumber = '06-12345678';
+    emailAdress = 'order@pet-supplies.com';
 }
