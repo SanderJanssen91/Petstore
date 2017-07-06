@@ -1,5 +1,7 @@
+import {Observable} from 'rxjs/Observable';
+
 import { ProductOrder } from "./product-order";
-import { Product } from "./product";
+import { Product } from "../product/product";
 import { Injectable } from "@angular/core";
 
 
@@ -9,6 +11,7 @@ export class ShoppingcartDataService {
     productOrderArray: ProductOrder[]=[];
     totalShoppingcartPrice:number=0; 
     productOrder:ProductOrder;
+    totalNumberProducts:number;
 
     getAllOrderedProducts(): ProductOrder[] {
         return this.productOrderArray
@@ -43,7 +46,8 @@ export class ShoppingcartDataService {
                 this.productOrder.quantity = this.productOrder.quantity + 1,
                 this.productOrder.totalPrice = (this.productOrder.productPrice*this.productOrder.quantity)
                 this.productOrderArray[this.getOrderedProductIndex(product.id)]=this.productOrder
-            }        
+            } 
+            console.log(this.getTotalNumberProducts())       
         return this.productOrder
     }
 
@@ -58,5 +62,14 @@ export class ShoppingcartDataService {
             }
         return this.totalShoppingcartPrice
         }
+    }
+
+    getTotalNumberProducts(): number {
+        var productOrderArray = this.getAllOrderedProducts();
+        var totalNumberProducts = 0;
+            for (var i = 0; i<productOrderArray.length; i++){
+                totalNumberProducts = totalNumberProducts + productOrderArray[i].quantity;
+            }
+            return totalNumberProducts
     }
 }

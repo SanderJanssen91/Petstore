@@ -55,8 +55,16 @@ p {
 
 nav{
     display: inline-block;
-    width: 67%;
+    width: 65%;
     text-align: right;
     margin: 0;
     vertical-align: middle;
+}
+
+.numberOfProducts{
+    display: inline-block;
+    width: 2%;
+    text-align: right;
+    margin: 0;
+    vertical-align: top;
 }

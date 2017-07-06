@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 
 import { ProductOrder } from "./product-order";
-import { ProductOrderService } from "./product-order.service";
+import { ProductOrderService } from "../order/product-order.service";
 
 @Component({
   selector: 'Order',
