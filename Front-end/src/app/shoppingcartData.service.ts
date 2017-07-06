@@ -23,6 +23,10 @@ export class ShoppingcartDataService {
             return _productOrder}
     }
 
+    getOrderedProductIndex(id:number): number {
+        return this.productOrderArray.findIndex(x => x.productId == id)
+    }
+
     addToShoppingcart(product:Product): ProductOrder {
         this.productOrder = this.getOrderedProduct(product.id)
             if (this.productOrder == undefined){
@@ -38,19 +42,21 @@ export class ShoppingcartDataService {
             else{
                 this.productOrder.quantity = this.productOrder.quantity + 1,
                 this.productOrder.totalPrice = (this.productOrder.productPrice*this.productOrder.quantity)
-                this.productOrderArray[this.productOrderArray.findIndex(x => x.productId == product.id)]=this.productOrder
+                this.productOrderArray[this.getOrderedProductIndex(product.id)]=this.productOrder
             }        
         return this.productOrder
     }
 
     getTotalShoppingcartPrice(): number {
-        if (this.productOrderArray.length == 0) 
-            {return 0}
+        this.totalShoppingcartPrice = 0;
+        var productOrderArray = this.getAllOrderedProducts();
+        if (productOrderArray.length == 0) {return 0}
         else {
-            for (var i=0; i<this.productOrderArray.length; i++){
-            this.totalShoppingcartPrice = this.totalShoppingcartPrice + this.productOrderArray[i].totalPrice
+            for (var i=0; i<productOrderArray.length; i++){
+            this.totalShoppingcartPrice = 
+                this.totalShoppingcartPrice + productOrderArray[i].totalPrice
+            }
+        return this.totalShoppingcartPrice
         }
-        console.log(this.totalShoppingcartPrice)
-        return this.totalShoppingcartPrice}
     }
 }

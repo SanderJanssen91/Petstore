@@ -16,27 +16,5 @@ import { ProductOrderService } from "./product-order.service";
   providers: [],
 })
 
-export class OrderComponent implements OnInit {
-    productsOrder: ProductOrder[];
-    orderTotalPrice: number;
-
-    constructor(private productOrderService: ProductOrderService) {
-    };
-  
-    getAllOrderedProducts(): void {
-      this.productOrderService
-          .getAllOrderedProducts()
-          .subscribe((data:ProductOrder[]) => this.productsOrder = data,
-              error => console.log(error),
-              () => console.log('GET all products in Order complete'));
-      this.productOrderService
-          .getTotalPrice()
-          .subscribe((data:number) => this.orderTotalPrice = data,
-            error => console.log(error),
-            () => console.log('GET order price complete'));
-    }
-
-    ngOnInit(): void {
-      this.getAllOrderedProducts();
-    }
+export class OrderComponent {
 }
