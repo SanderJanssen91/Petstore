@@ -1,9 +1,9 @@
 export class ProductOrder {
   constructor(
-  productId: number,
-  productName: string,
-  productPrice: number,
-  totalPrice: number,
-  quantity: number,
+  public productId: number,
+  public productName: string,
+  public productPrice: number,
+  public totalPrice: number,
+  public quantity: number,
   ){}
 };

@@ -1,11 +1,11 @@
-  <div *ngIf="productsOrder">
+  <div>
     <table>
       <tr>
         <th>Naam</th> 
         <th>Prijs totaal</th>
         <th>Aantal</th>
       </tr>
-      <tr *ngFor="let productOrder of productsOrder">
+      <tr *ngFor="let productOrder of productOrderArray">
         <td>{{productOrder.productName}}</td>
         <td>€{{productOrder.totalPrice}},-</td>
         <td> {{productOrder.quantity}}</td>

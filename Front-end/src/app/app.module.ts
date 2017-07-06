@@ -10,6 +10,7 @@ import { ProductsComponent } from "./products.component";
 import { OrderComponent } from "./order.component";
 import { ProductOrderService } from "./product-order.service";
 import { OrderProductTableComponent } from "./order-product-table.component";
+import { ShoppingcartDataService } from "./shoppingcartData.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { OrderProductTableComponent } from "./order-product-table.component";
       },
     ])
   ],
-  providers: [ProductService, ProductOrderService],
+  providers: [ProductService, ProductOrderService, ShoppingcartDataService],
   bootstrap: [AppComponent]
 })
 
