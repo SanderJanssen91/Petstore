@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 
 import { Product } from "./product";
 import { ProductService } from "./product.service";
+import { ShoppingcartDataService } from "../shoppingcartData.service";
 
 @Component({
   selector: 'product-table',
@@ -19,17 +20,11 @@ export class ProductTableComponent {
     @Input() orderTotalPrice: number;
     @Input() products: Product[];
     
-    constructor(private productService: ProductService) {
+    constructor(private productService: ProductService, private shoppingcartDataService:ShoppingcartDataService) {
     };
 
     addToCart(product:Product): void {
-      this.productService.addToCart(product)
-        .subscribe(
-          result => console.log(result))
-      this.productService.getTotalPrice()
-        .subscribe(
-          (data:number) => this.orderTotalPrice = data,
-            error => console.log(error),
-            () => console.log('GET order price complete'));
+      this.shoppingcartDataService.addToShoppingcart(product)
+      this.shoppingcartDataService.getTotalShoppingcartPrice()
       }
 }

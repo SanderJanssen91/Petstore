@@ -1,0 +1,52 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+th, td {
+    padding: 4px;
+    color: darkblue; 
+}
+
+p {
+    color: darkblue;
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+    background-color: white;
+    border: none;
+    color: darkblue;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 6px;
+    vertical-align: middle;
+}
+
+.productQuantity{
+    display: inline-block;
+    padding: 4px;
+}
+
+.noWrap{
+    white-space: nowrap
+}
+
+.addButton{
+    padding: 0px 0px;
+    font-size: 4px;
+    border: 1px solid darkblue;
+    background-color: lightblue;
+}
+
+.removeButton{
+    padding: 0px 0px;
+    font-size: 4px;
+    border: 1px solid darkblue;
+    background-color: lightblue;
+}

@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
-import { ProductOrder } from "./product-order";
+import { ProductOrder } from "../order/product-order";
 
 @Injectable()
 export class ProductOrderService {
