@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs/Observable';
 
-import { ProductOrder } from "./product-order";
-import { Product } from "../product/product";
+import { ProductOrder } from "./order/product-order";
+import { Product } from "./product/product";
 import { Injectable } from "@angular/core";
 
 
@@ -70,6 +70,32 @@ export class ShoppingcartDataService {
             for (var i = 0; i<productOrderArray.length; i++){
                 totalNumberProducts = totalNumberProducts + productOrderArray[i].quantity;
             }
-            return totalNumberProducts
+            return totalNumberProducts;
     }
+
+    removeFromShoppingcart(productId:number): void {
+        this.productOrder = this.getOrderedProduct(productId)
+        let index: number = this.productOrderArray.indexOf(this.productOrder);
+        if (index !== -1) {
+        this.productOrderArray.splice(index, 1);
+        }        
+    }
+
+    decreaseQuantity(productId:number):void{
+        this.productOrder = this.getOrderedProduct(productId)
+        if (this.productOrder.quantity == 1) {
+            this.removeFromShoppingcart(productId)
+        }
+        else {
+        this.productOrder.quantity = this.productOrder.quantity-1
+        this.productOrder.totalPrice = this.productOrder.quantity * this.productOrder.productPrice
+        }
+    }
+
+    increaseQuantity(productId:number):void{
+        this.productOrder = this.getOrderedProduct(productId)
+        this.productOrder.quantity = this.productOrder.quantity+1
+        this.productOrder.totalPrice = this.productOrder.quantity * this.productOrder.productPrice
+    }
+    
 }

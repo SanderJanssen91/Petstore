@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 
 import { Product } from "./product";
 import { ProductService } from "./product.service";
-import { ShoppingcartDataService } from "../order/shoppingcartData.service";
+import { ShoppingcartDataService } from "../shoppingcartData.service";
 
 @Component({
   selector: 'product-table',

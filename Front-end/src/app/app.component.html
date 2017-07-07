@@ -8,7 +8,9 @@
   <nav>
       <a routerLink="/products"><i class="material-icons">home</i></a>
       <a routerLink="/shoppingcart"> <i class="material-icons">shopping_cart</i></a>
-      <div class="numberOfProducts">{{numberOfProducts}}</div>
+      <div class="numberCircle"> 
+        <div class="numberOfProducts">{{getTotalNumberProducts()}}</div>
+        </div>
     </nav>
   </div>
   <router-outlet></router-outlet>
