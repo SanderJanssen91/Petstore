@@ -31,6 +31,10 @@ export class ShoppingcartDataService {
     }
 
     addToShoppingcart(product:Product): ProductOrder {
+        if(this.productOrderArray == undefined){
+            this.productOrderArray = [];
+        }
+        this.productOrder = undefined;
         this.productOrder = this.getOrderedProduct(product.id)
             if (this.productOrder == undefined){
                 var _productOrder:ProductOrder=
@@ -47,7 +51,7 @@ export class ShoppingcartDataService {
                 this.productOrder.totalPrice = (this.productOrder.productPrice*this.productOrder.quantity)
                 this.productOrderArray[this.getOrderedProductIndex(product.id)]=this.productOrder
             } 
-            console.log(this.getTotalNumberProducts())       
+                 
         return this.productOrder
     }
 
@@ -78,6 +82,7 @@ export class ShoppingcartDataService {
         let index: number = this.productOrderArray.indexOf(this.productOrder);
         if (index !== -1) {
         this.productOrderArray.splice(index, 1);
+        console.log(this.productOrderArray)
         }        
     }
 
