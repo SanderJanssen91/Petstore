@@ -2,17 +2,17 @@
     <table>
       <tr>
         <th>Naam</th> 
-        <th>Prijs totaal</th>
         <th>Aantal</th>
+        <th>Prijs totaal</th>
       </tr>
       <tr *ngFor="let productOrder of productOrderArray">
         <td>{{productOrder.productName}}</td>
-        <td>€{{productOrder.totalPrice}},-</td>
         <td class="nowrap"> 
             <button class="button removeButton" (click)="decreaseQuantity(productOrder)"> <i class="material-icons">remove</i> </button> 
             <div class="productQuantity">{{productOrder.quantity}}</div>
             <button class="button addButton" (click)="increaseQuantity(productOrder)"> <i class="material-icons">add</i> </button>
         </td>
+        <td>€{{productOrder.totalPrice}},-</td>
         <td>
             <button (click)="removeFromCart(productOrder)"> <i class="material-icons">delete</i> </button>
         </td>
