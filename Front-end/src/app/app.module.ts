@@ -11,6 +11,8 @@ import { OrderComponent } from "./order/order.component";
 import { ProductOrderService } from "./order/product-order.service";
 import { OrderProductTableComponent } from "./order/order-product-table.component";
 import { ShoppingcartDataService } from "./shoppingcartData.service";
+import { CustomerService } from "./customer/customer.service";
+import { CustomerFormComponent } from "./customer/customer-form.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { ShoppingcartDataService } from "./shoppingcartData.service";
     ProductsComponent,
     OrderComponent,
     OrderProductTableComponent,
+    CustomerFormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { ShoppingcartDataService } from "./shoppingcartData.service";
       },
     ])
   ],
-  providers: [ProductService, ProductOrderService, ShoppingcartDataService],
+  providers: [ProductService, ProductOrderService, ShoppingcartDataService, CustomerService],
   bootstrap: [AppComponent]
 })
 

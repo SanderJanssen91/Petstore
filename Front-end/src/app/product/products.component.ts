@@ -27,13 +27,7 @@ export class ProductsComponent implements OnInit {
       this.productService
           .getAllProducts()
           .subscribe((data:Product[]) => this.products = data,
-              error => console.log(error),
-              () => console.log('GET all products complete'));
-      this.productService
-          .getTotalPrice()
-          .subscribe((data:number) => this.orderTotalPrice = data,
-            error => console.log(error),
-            () => console.log('GET order price complete'));
+              error => console.log(error));
     }
 
     ngOnInit(): void {

@@ -3,15 +3,26 @@ import {Observable} from 'rxjs/Observable';
 import { ProductOrder } from "./order/product-order";
 import { Product } from "./product/product";
 import { Injectable } from "@angular/core";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class ShoppingcartDataService {
+    private actionUrl1: string;
+    private actionUrl2: string;
+    private actionUrl3: string;
     product:Product;
     productOrderArray: ProductOrder[]=[];
     totalShoppingcartPrice:number=0; 
     productOrder:ProductOrder;
     totalNumberProducts:number;
+
+    constructor(private http : Http){
+        this.actionUrl1 = 'http://localhost:8080/Back-end-1.0/rest/order/new';
+        this.actionUrl2 = '';
+        this.actionUrl3 = '';
+    }
 
     getAllOrderedProducts(): ProductOrder[] {
         return this.productOrderArray
@@ -51,7 +62,6 @@ export class ShoppingcartDataService {
                 this.productOrder.totalPrice = (this.productOrder.productPrice*this.productOrder.quantity)
                 this.productOrderArray[this.getOrderedProductIndex(product.id)]=this.productOrder
             } 
-                 
         return this.productOrder
     }
 
@@ -102,5 +112,13 @@ export class ShoppingcartDataService {
         this.productOrder.quantity = this.productOrder.quantity+1
         this.productOrder.totalPrice = this.productOrder.quantity * this.productOrder.productPrice
     }
-    
+
+    addProductOrder() : Observable<ProductOrder[]>{
+        var productOrderArray:ProductOrder[] = this.getAllOrderedProducts();
+        return this.http
+            .post(this.actionUrl1, productOrderArray)
+            .map((response: Response) => {
+                const productOrderArray = response.json();
+                return productOrderArray;})
+        }
 }

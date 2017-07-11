@@ -17,7 +17,6 @@ import { ShoppingcartDataService } from "../shoppingcartData.service";
 })
 
 export class ProductTableComponent {
-    @Input() orderTotalPrice: number;
     @Input() products: Product[];
     
     constructor(private productService: ProductService, private shoppingcartDataService:ShoppingcartDataService) {
