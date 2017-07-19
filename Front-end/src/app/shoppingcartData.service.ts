@@ -5,7 +5,8 @@ import { Product } from "./product/product";
 import { Injectable } from "@angular/core";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
-
+import { Customer } from "app/customer/customer";
+import { Order } from "app/order/order";
 
 @Injectable()
 export class ShoppingcartDataService {
@@ -17,10 +18,12 @@ export class ShoppingcartDataService {
     totalShoppingcartPrice:number=0; 
     productOrder:ProductOrder;
     totalNumberProducts:number;
+    private customer:Customer;
+    private order:Order;
 
     constructor(private http : Http){
-        this.actionUrl1 = 'http://localhost:8080/Back-end-1.0/rest/order/new';
-        this.actionUrl2 = '';
+        this.actionUrl1 = 'http://localhost:8080/Back-end-1.0/rest/productorder/add';
+        this.actionUrl2 = 'http://localhost:8080/Back-end-1.0/rest/order/add';
         this.actionUrl3 = '';
     }
 
@@ -113,12 +116,32 @@ export class ShoppingcartDataService {
         this.productOrder.totalPrice = this.productOrder.quantity * this.productOrder.productPrice
     }
 
-    addProductOrder() : Observable<ProductOrder[]>{
+    addProductOrder(orderId:number) : Observable<ProductOrder[]>{
         var productOrderArray:ProductOrder[] = this.getAllOrderedProducts();
+        for(var i=0; i<productOrderArray.length; i++){
+            var productOrder = <ProductOrder> {
+                                    productId:productOrderArray[i].productId,
+                                    productName:productOrderArray[i].productName,
+                                    productPrice:productOrderArray[i].productPrice,
+                                    totalPrice:productOrderArray[i].totalPrice,
+                                    quantity:productOrderArray[i].quantity,
+                                    orderId:orderId
+            };
+        productOrderArray[i]=productOrder}
         return this.http
             .post(this.actionUrl1, productOrderArray)
             .map((response: Response) => {
-                const productOrderArray = response.json();
-                return productOrderArray;})
+                const productOrderArrayOutput = response.json();
+                return productOrderArrayOutput;})
         }
+
+    addOrder(customerId:number): Observable<Order>{
+        var order:Order = new Order(customerId)
+        return this.http
+            .post(this.actionUrl2, order)
+            .map((response: Response) => {
+                var order2 = response.json();
+                this.order = order2;
+                return order2;})
+    }
 }

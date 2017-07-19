@@ -3,14 +3,13 @@ nl\sander\rest\ProductRestController.class
 nl\sander\model\Product.class
 nl\sander\rest\ProductOrderRestController.class
 nl\sander\model\Customer.class
+nl\sander\rest\OrderRestController.class
 nl\sander\rest\CustomerRestController.class
 nl\sander\service\AbstractCrudRepository.class
-nl\sander\Order.class
 nl\sander\service\ProductService.class
-nl\sander\OrderProduct.class
 nl\sander\service\ProductOrderService.class
-nl\sander\MyCompositePK.class
 nl\sander\CorsFilter.class
 nl\sander\service\CustomerService.class
 nl\sander\model\Order.class
 nl\sander\model\ProductOrder.class
+nl\sander\service\OrderService.class

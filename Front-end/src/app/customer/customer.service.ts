@@ -20,13 +20,13 @@ export class CustomerService {
     }
 
     addCustomer(name:string, address:string, postalCode:string, city: string, emailAddress:string): Observable<Customer> {
-                var customer = new Customer(name, address, postalCode, city,emailAddress)
+                var customer = new Customer(name, address, postalCode, city, emailAddress)
         return this.http
             .post(this.actionUrl1, customer)
             .map((response: Response) => {
-                const customer = response.json();
+                var customer = response.json();
                 this.customer = customer;
-                return customer;            
+                return this.customer;            
             })
     }
 }

@@ -1,9 +1,6 @@
 package nl.sander.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by sanjanss on 10-7-2017.
@@ -14,7 +11,7 @@ import javax.persistence.Table;
 public class Customer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int customerId;
     private String customerName;
     private String customerAddress;

@@ -23,9 +23,8 @@ public class CustomerRestController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/add")
-    public Customer addCustomer(Customer customerInput) {
-        Customer customerOutput = customerService.persist(customerInput);
-        System.out.print(customerOutput);
-        return customerOutput;
+    public Customer addCustomer(Customer customer) {
+        customerService.persist(customer);
+        return customer;
     }
 }

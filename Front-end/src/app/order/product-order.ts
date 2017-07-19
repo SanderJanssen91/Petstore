@@ -5,5 +5,6 @@ export class ProductOrder {
   public productPrice: number,
   public totalPrice: number,
   public quantity: number,
+  public orderId?: (number)
   ){}
 };
