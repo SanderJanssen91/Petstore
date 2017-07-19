@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { Customer } from "./customer";
 import { Order } from "../order/order";
@@ -18,26 +19,18 @@ export class CustomerFormComponent {
   productOrderArray: ProductOrder[];
   order:Order;
        
-    constructor(private router:Router, private customerService: CustomerService, private shoppingcartDataService:ShoppingcartDataService){};
-
-    addCustomer(name:string, address:string, postalCode:string, city:string, emailAddress:string): void {
-      this.customerService.addCustomer(name, address, postalCode, city, emailAddress)
-        .subscribe(customer => this.customer = customer)
-            }
+    constructor(private flashMessagesService: FlashMessagesService, private router:Router, private customerService: CustomerService, private shoppingcartDataService:ShoppingcartDataService){};
 
     addOrder(name:string, address:string, postalCode:string, city:string, emailAddress:string):void{
       this.customerService.addCustomer(name, address, postalCode, city, emailAddress)
         .subscribe(customer => this.shoppingcartDataService.addOrder(customer.customerId)
           .subscribe(order => this.shoppingcartDataService.addProductOrder(order.orderId)
             .subscribe(productOrderArray => this.productOrderArray = productOrderArray)))
-    }
-
-    addProductOrder(): void{
-      this.shoppingcartDataService.addProductOrder(this.order.orderId)
-      .subscribe(productOrderArray => this.productOrderArray = productOrderArray)
+      this.flashMessagesService.show('Bedankt voor uw bestelling', {cssClass: 'succesflashmessage', timeout: 5000 });
     }
 
     btnClick= function () {
         this.router.navigateByUrl('/products');
+        setTimeout(()=>{this.shoppingcartDataService.removeAllOrderedProducts()}, 500)
     };
 }

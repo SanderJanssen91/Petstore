@@ -31,6 +31,10 @@ export class ShoppingcartDataService {
         return this.productOrderArray
     }
 
+    removeAllOrderedProducts(){
+        this.productOrderArray = [];
+    }
+
     getOrderedProduct(id:number): ProductOrder {
         if (this.productOrderArray.length == 0){
             return this.productOrder}
@@ -118,6 +122,8 @@ export class ShoppingcartDataService {
 
     addProductOrder(orderId:number) : Observable<ProductOrder[]>{
         var productOrderArray:ProductOrder[] = this.getAllOrderedProducts();
+        console.log(productOrderArray)
+        console.log(productOrderArray[0].productId)
         for(var i=0; i<productOrderArray.length; i++){
             var productOrder = <ProductOrder> {
                                     productId:productOrderArray[i].productId,
@@ -128,6 +134,7 @@ export class ShoppingcartDataService {
                                     orderId:orderId
             };
         productOrderArray[i]=productOrder}
+        console.log(productOrder)
         return this.http
             .post(this.actionUrl1, productOrderArray)
             .map((response: Response) => {

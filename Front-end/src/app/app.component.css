@@ -85,7 +85,10 @@ nav{
     color:darkblue;
     text-align: center;
     font-weight: bold;
-    
-
     font: 20px Arial, sans-serif;
+}
+
+.flashmessage {
+    padding-block-start: 7px;
+    padding-block-end: 7px;
 }

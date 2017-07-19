@@ -4,3 +4,11 @@ body {
     margin-left: 8%;
     margin-right: 8%;
 }
+
+.succesflashmessage {
+        background-color: lightgreen;
+        text-align: center;
+        border: 2px solid green;
+        font: 28px Arial, Helvetica, sans-serif;
+        color: darkblue;
+}

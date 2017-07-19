@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import { RouterModule } from "@angular/router";
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { ProductTableComponent } from "./product/product-table.component";
@@ -26,6 +27,7 @@ import { CustomerFormComponent } from "./customer/customer-form.component";
   imports: [
     BrowserModule,
     HttpModule,
+    FlashMessagesModule,
     RouterModule.forRoot([
       {
         path: 'products',
@@ -40,7 +42,8 @@ import { CustomerFormComponent } from "./customer/customer-form.component";
         path: 'shoppingcart',
         component: OrderComponent,
       },
-    ])
+    ],
+    )
   ],
   providers: [ProductService, ProductOrderService, ShoppingcartDataService, CustomerService],
   bootstrap: [AppComponent]
